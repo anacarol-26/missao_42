@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <style>
+        /* Estilo básico apenas para visualização, já que o design é livre */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #ft_list {
+            margin-top: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            min-height: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        /* Estilo de cada tarefa gerada */
+        .todo-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #eee;
+            border-left: 5px solid #007bff;
+            cursor: pointer;
+            word-wrap: break-word;
+        }
+        .todo-item:hover {
+            background-color: #ffcccc;
+            border-left-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Minhas Tarefas</h1>
+    
+    
+    <button id="btn-adicionar">Adicionar tarefa</button>
+
+    
+    <div id="ft_list"></div>
+
+    <!-- Vinculação do arquivo Javascript externo -->
+    <script src="todo.js"></script>
+</body>
+</html>

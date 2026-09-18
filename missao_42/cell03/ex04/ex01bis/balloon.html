@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>balloon.html</title>
+    <style>
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        #balao {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%; 
+            cursor: pointer;
+            transition: width 0.1s ease, height 0.1s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balao"></div>
+
+    <script>
+        const balao = document.getElementById('balao');
+        
+    
+        let tamanhoAtual = 200;
+        const cores = ['red', 'green', 'blue'];
+        let indiceCor = 0; 
+
+        
+        function atualizarBalao() {
+            balao.style.width = tamanhoAtual + 'px';
+            balao.style.height = tamanhoAtual + 'px';
+            balao.style.backgroundColor = cores[indiceCor];
+        }
+
+        
+        balao.addEventListener('click', () => {
+            tamanhoAtual += 10; 
+
+            
+            if (tamanhoAtual > 420) {
+                alert('O balão explodiu!');
+                tamanhoAtual = 200; 
+                indiceCor = 0;      
+            } else {
+                
+                indiceCor = (indiceCor + 1) % cores.length;
+            }
+
+            atualizarBalao();
+        });
+
+      
+        balao.addEventListener('mouseleave', () => {
+            
+            if (tamanhoAtual > 200) {
+                tamanhoAtual -= 5;
+                if (tamanhoAtual < 200) tamanhoAtual = 200;
+
+              
+                indiceCor = (indiceCor - 1 + cores.length) % cores.length;
+            }
+
+            atualizarBalao();
+        });
+    </script>
+
+</body>
+</html>

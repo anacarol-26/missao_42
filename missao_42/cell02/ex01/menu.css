@@ -1,0 +1,54 @@
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+/* O container do menu precisa ser 'inline-block' para ter o tamanho exato do botão */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Estilo do botão principal */
+.botao-menu {
+    background-color: #ee03da; 
+    color: #000000;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: 1px solid #000000;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* O segredo: A lista de links começa ESCONDIDA (display: none) */
+.conteudo-menu {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    border: 1px solid #000000;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    z-index: 1; /* Garante que o menu flutue por cima de outros elementos */
+}
+
+/* Estilo dos links dentro do menu */
+.conteudo-menu a {
+    color: #000000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Efeito de passar o mouse por cima dos links da lista */
+.conteudo-menu a:hover {
+    background-color: #d12fb6; 
+    color: #ffffff;
+}
+
+/* Quando passar o mouse no bloco '.dropdown', 
+   o '.conteudo-menu' muda para 'display: block' e aparece na tela! */
+.dropdown:hover .conteudo-menu {
+    display: block;
+}

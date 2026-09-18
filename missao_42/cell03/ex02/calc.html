@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+
+    
+    <form id="calcForm">
+        
+        <input type="text" id="membroEsquerdo" placeholder="Membro Esquerdo">
+
+        
+        <select id="operador">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+
+        
+        <input type="text" id="membroDireito" placeholder="Membro Direito">
+
+        
+        <input type="submit" value="Try me!">
+    </form>
+
+    <script>
+        
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000); 
+
+        
+        const formulario = document.getElementById('calcForm');
+
+        formulario.addEventListener('submit', (evento) => {
+            
+            evento.preventDefault(); 
+
+            
+            const valorEsquerdo = document.getElementById('membroEsquerdo').value.trim();
+            const valorDireito = document.getElementById('membroDireito').value.trim();
+            const operador = document.getElementById('operador').value;
+
+            
+            const regexInteiroPositivo = /^\d+$/;
+
+            
+            if (!regexInteiroPositivo.test(valorEsquerdo) || !regexInteiroPositivo.test(valorDireito)) {
+                alert('Error :(');
+                return; 
+            }
+
+            
+            const numEsquerdo = parseInt(valorEsquerdo, 10);
+            const numDireito = parseInt(valorDireito, 10);
+
+            
+            if ((operador === '/' || operador === '%') && numDireito === 0) {
+                const msgZero = "It’s over 9000!";
+                alert(msgZero);
+                console.log(msgZero);
+                return; 
+            }
+
+            
+            let resultado;
+            if (operador === '+') {
+                resultado = numEsquerdo + numDireito;
+            } else if (operador === '-') {
+                resultado = numEsquerdo - numDireito;
+            } else if (operador === '*') {
+                resultado = numEsquerdo * numDireito;
+            } else if (operador === '/') {
+                resultado = numEsquerdo / numDireito;
+            } else if (operador === '%') {
+                resultado = numEsquerdo % numDireito;
+            }
+
+            
+            alert(resultado);
+            console.log(resultado);
+        });
+    </script>
+
+</body>
+</html>

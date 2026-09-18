@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Cor de Fundo</title>
+    <link rel="stylesheet" href="backgroound.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.js"></script>
+    
+</head>
+<body>
+
+    <div class="container">
+        <button id="botao-cor">Clique aqui</button>
+    </div>
+
+    <script>
+        const botao = document.getElementById('botao-cor');
+
+        function gerarCorAleatoria() {
+            const caracteres = '0123456789ABCDEF';
+            let cor = '#';
+            for (let i = 0; i < 6; i++) {
+                cor += caracteres[Math.floor(Math.random() * 16)];
+            }
+            return cor;
+        }
+
+        botao.addEventListener('click', () => {
+            const novaCor = gerarCorAleatoria();
+            document.body.style.backgroundColor = novaCor;
+        });
+    </script>
+
+</body>
+</html>
