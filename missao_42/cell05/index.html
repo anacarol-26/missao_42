@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Manual completo e didático de Git e GitHub">
+<title>Git & GitHub — Manual Completo</title>
+<style>
+:root{--bg:#080d18;--surface:#101829;--surface2:#151f34;--code:#070b14;--line:#273550;--text:#eef4ff;--muted:#aab7cf;--blue:#79a7ff;--green:#68e0c0;--gold:#ffd479;--red:#ff8e9b;--purple:#c8a7ff;--shadow:0 18px 55px #0006}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% -5%,#213967 0,transparent 30%),radial-gradient(circle at 90% 15%,#172d49 0,transparent 24%),var(--bg);color:var(--text);font:15px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}code,pre{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}code{color:#b9d0ff}.wrap{max-width:1320px;margin:auto;padding:0 25px}header{padding:65px 0 40px}.eyebrow{font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;color:var(--green)}h1{font-size:clamp(2.7rem,7vw,5.6rem);line-height:.98;letter-spacing:-.065em;margin:12px 0}h1 span{color:var(--blue)}header p{max-width:850px;color:var(--muted);font-size:1.1rem}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.chip{padding:6px 11px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:#ffffff08}.layout{display:grid;grid-template-columns:270px 1fr;gap:22px;padding-bottom:65px}.side{position:sticky;top:14px;align-self:start;max-height:calc(100vh - 28px);overflow:auto;background:#0e1627e8;border:1px solid var(--line);border-radius:18px;padding:15px;backdrop-filter:blur(12px)}.side b{display:block;padding:5px 8px 11px}.nav{display:grid;gap:2px}.nav a{color:var(--muted);padding:7px 9px;border-radius:8px;text-decoration:none;font-size:.87rem}.nav a:hover{background:#ffffff0b;color:var(--text)}.content{min-width:0}.section,.hero-card{background:linear-gradient(145deg,#131e33,#0d1525);border:1px solid var(--line);border-radius:19px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}h2{font-size:1.55rem;margin:0 0 7px;letter-spacing:-.025em}h3{font-size:1rem;margin:0 0 6px}p{color:var(--muted);margin:7px 0}ul{color:var(--muted);padding-left:20px}li{margin:4px 0}.subtitle{color:var(--muted);margin-bottom:17px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{background:#0a1120;border:1px solid #26344f;border-radius:13px;padding:14px}.cmdline{display:flex;align-items:flex-start;gap:8px;background:var(--code);border:1px solid #202d45;border-radius:9px;padding:9px 10px;margin:9px 0}.cmdline code{flex:1;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.83rem;line-height:1.55}.copy{background:#18253d;border:1px solid #344665;color:#e2eaff;border-radius:7px;padding:4px 7px;cursor:pointer;font-size:.7rem}.copy:hover{background:#263a5c}.tag{font-size:.64rem;border:1px solid #68e0c033;background:#68e0c012;color:var(--green);border-radius:99px;padding:2px 7px;white-space:nowrap}.head{display:flex;justify-content:space-between;gap:10px;align-items:start}.note{margin:14px 0;padding:11px 14px;border-left:3px solid var(--gold);background:#ffd47910;color:#e9d9b8;border-radius:0 9px 9px 0}.danger{border-left-color:var(--red);background:#ff8e9b0d;color:#f4c6cc}.tip{border-left-color:var(--green);background:#68e0c00c;color:#c9f4e8}.flow{background:#070c17;border:1px solid var(--line);border-radius:11px;padding:14px;margin:10px 0;color:var(--muted)}.flow code{color:var(--green)}table{width:100%;border-collapse:collapse;color:var(--muted);font-size:.88rem}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--text)}.search{width:100%;padding:12px 14px;background:#080f1d;color:var(--text);border:1px solid var(--line);border-radius:11px;font:inherit;outline:none;margin-bottom:13px}.search:focus{border-color:var(--blue);box-shadow:0 0 0 3px #79a7ff1c}.hidden{display:none!important}.back{position:fixed;right:18px;bottom:18px;background:#79a7ff;color:#07101e;border:0;border-radius:99px;padding:9px 13px;font-weight:800;cursor:pointer;box-shadow:var(--shadow)}footer{text-align:center;color:#74829d;padding:0 0 35px;font-size:.8rem}@media(max-width:900px){.layout{grid-template-columns:1fr}.side{position:relative;max-height:none}.nav{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.wrap{padding:0 14px}.grid{grid-template-columns:1fr}.section,.hero-card{padding:17px}header{padding-top:40px}}
+</style>
+</head>
+<body>
+<header class="wrap" id="top">
+<div class="eyebrow">Manual de referência · Git + GitHub</div>
+<h1>Git <span>&</span> GitHub</h1>
+<p>O guia que você consulta quando pensa: “qual comando eu uso agora?”. Do primeiro <code>git init</code> até branches, Pull Requests, tags, stash, rebase, recuperação de histórico, submodules, hooks e manutenção de repositórios.</p>
+<div class="chips"><span class="chip">✓ Fundamentos</span><span class="chip">✓ Comandos avançados</span><span class="chip">✓ GitHub</span><span class="chip">✓ Exemplos</span><span class="chip">✓ Segurança</span></div>
+</header>
+<div class="wrap layout">
+<aside class="side"><b>📖 Índice</b><nav class="nav">
+<a href="#mapa">Mapa mental</a><a href="#config">1. Configuração</a><a href="#repos">2. Repositórios</a><a href="#status">3. Status e staging</a><a href="#commit">4. Commits</a><a href="#branch">5. Branches</a><a href="#merge">6. Merge</a><a href="#rebase">7. Rebase</a><a href="#remote">8. Remotos</a><a href="#pull">9. Pull/fetch</a><a href="#tags">10. Tags/releases</a><a href="#stash">11. Stash</a><a href="#undo">12. Desfazer</a><a href="#reflog">13. Recuperação</a><a href="#diff">14. Histórico/diff</a><a href="#search">15. Buscar histórico</a><a href="#ignore">16. .gitignore</a><a href="#conflict">17. Conflitos</a><a href="#github">18. GitHub</a><a href="#security">19. Segurança</a><a href="#submodule">20. Submodules</a><a href="#hooks">21. Hooks</a><a href="#maintenance">22. Manutenção</a><a href="#aliases">23. Aliases</a><a href="#advanced">24. Avançado</a><a href="#trouble">25. Problemas comuns</a><a href="#cheat">26. Cheat sheet</a>
+</nav></aside>
+<main class="content">
+
+<section class="hero-card" id="mapa"><h2>Antes de decorar comandos: entenda o mapa</h2>
+<p>Git trabalha com três lugares principais e um remoto:</p>
+<div class="grid">
+<div class="card"><h3>🖥️ Working tree</h3><p>Os arquivos que você está editando agora.</p></div>
+<div class="card"><h3>📦 Staging area</h3><p>O “rascunho do próximo commit”. O <code>git add</code> coloca mudanças aqui.</p></div>
+<div class="card"><h3>🧠 Repository</h3><p>O histórico de commits guardado pelo Git na pasta <code>.git</code>.</p></div>
+<div class="card"><h3>☁️ Remote</h3><p>Uma cópia/referência hospedada fora do computador, como no GitHub.</p></div>
+</div>
+<div class="flow"><code>editar → git add → staging → git commit → histórico local → git push → GitHub</code><br><br><code>GitHub → git fetch/pull → repositório local</code></div>
+<div class="note tip"><b>Decore esta frase:</b> <code>add</code> prepara · <code>commit</code> registra · <code>push</code> envia · <code>fetch</code> busca sem integrar · <code>pull</code> busca e integra.</div>
+</section>
+
+<section class="section" id="config"><h2>1 · Configuração inicial</h2><p class="subtitle">Normalmente feita uma vez por computador/ambiente.</p><div class="grid">
+<div class="card"><h3>Nome do autor</h3><div class="cmdline"><code>git config --global user.name "Seu Nome"</code><button class="copy">Copiar</button></div><p>Nome associado aos seus commits.</p></div>
+<div class="card"><h3>E-mail do autor</h3><div class="cmdline"><code>git config --global user.email "voce@email.com"</code><button class="copy">Copiar</button></div><p>E-mail associado aos commits.</p></div>
+<div class="card"><h3>Listar configuração</h3><div class="cmdline"><code>git config --list --show-origin</code><button class="copy">Copiar</button></div><p>Mostra valores e de onde vieram.</p></div>
+<div class="card"><h3>Ver um valor</h3><div class="cmdline"><code>git config user.name</code><button class="copy">Copiar</button></div><p>Troque por <code>user.email</code>, por exemplo.</p></div>
+<div class="card"><h3>Editor</h3><div class="cmdline"><code>git config --global core.editor "code --wait"</code><button class="copy">Copiar</button></div><p>Define VS Code como editor, se o comando <code>code</code> estiver disponível.</p></div>
+<div class="card"><h3>Branch padrão</h3><div class="cmdline"><code>git config --global init.defaultBranch main</code><button class="copy">Copiar</button></div><p>Faz novos <code>git init</code> começarem em <code>main</code>.</p></div>
+<div class="card"><h3>Configuração local</h3><div class="cmdline"><code>git config user.email "outro@email.com"</code><button class="copy">Copiar</button></div><p>Sem <code>--global</code>, vale apenas para o repositório atual.</p></div>
+<div class="card"><h3>Remover configuração</h3><div class="cmdline"><code>git config --global --unset user.name</code><button class="copy">Copiar</button></div><p>Remove uma configuração global específica.</p></div>
+</div></section>
+
+<section class="section" id="repos"><h2>2 · Criar, clonar e inspecionar repositórios</h2><div class="grid">
+<div class="card"><h3>Inicializar</h3><div class="cmdline"><code>git init</code><button class="copy">Copiar</button></div><p>Cria um repositório Git na pasta atual.</p></div>
+<div class="card"><h3>Clonar</h3><div class="cmdline"><code>git clone https://github.com/usuario/projeto.git</code><button class="copy">Copiar</button></div><p>Baixa arquivos, histórico e configuração do remoto.</p></div>
+<div class="card"><h3>Clonar em pasta específica</h3><div class="cmdline"><code>git clone URL nome-da-pasta</code><button class="copy">Copiar</button></div><p>Escolhe o nome da pasta local.</p></div>
+<div class="card"><h3>Clonar apenas parte do histórico</h3><div class="cmdline"><code>git clone --depth 1 URL</code><button class="copy">Copiar</button></div><p>Cria um clone raso, útil quando o histórico completo não é necessário.</p></div>
+<div class="card"><h3>Ver versão</h3><div class="cmdline"><code>git --version</code><button class="copy">Copiar</button></div><p>Confirma a instalação do Git.</p></div>
+<div class="card"><h3>Ajuda geral</h3><div class="cmdline"><code>git help</code><button class="copy">Copiar</button></div><p>Abre a documentação de ajuda do Git.</p></div>
+<div class="card"><h3>Ajuda de um comando</h3><div class="cmdline"><code>git help commit</code><button class="copy">Copiar</button></div><p>Documentação completa do comando.</p></div>
+<div class="card"><h3>Ajuda rápida</h3><div class="cmdline"><code>git commit -h</code><button class="copy">Copiar</button></div><p>Opções resumidas do comando.</p></div>
+</div></section>
+
+<section class="section" id="status"><h2>3 · Status, add e staging</h2><div class="grid">
+<div class="card"><h3>Status</h3><div class="cmdline"><code>git status</code><button class="copy">Copiar</button></div><p>Mostra branch atual, arquivos modificados, staged e não rastreados.</p></div>
+<div class="card"><h3>Status curto</h3><div class="cmdline"><code>git status --short</code><button class="copy">Copiar</button></div><p>Versão compacta do status.</p></div>
+<div class="card"><h3>Add um arquivo</h3><div class="cmdline"><code>git add arquivo.html</code><button class="copy">Copiar</button></div><p>Coloca o arquivo no staging.</p></div>
+<div class="card"><h3>Add vários</h3><div class="cmdline"><code>git add index.html style.css script.js</code><button class="copy">Copiar</button></div><p>Prepara arquivos específicos.</p></div>
+<div class="card"><h3>Add tudo</h3><div class="cmdline"><code>git add .</code><button class="copy">Copiar</button></div><p>Prepara alterações da pasta atual e subpastas.</p></div>
+<div class="card"><h3>Add interativo</h3><div class="cmdline"><code>git add -p</code><button class="copy">Copiar</button></div><p>Permite escolher trechos específicos das mudanças.</p></div>
+<div class="card"><h3>Tirar do staging</h3><div class="cmdline"><code>git restore --staged arquivo.html</code><button class="copy">Copiar</button></div><p>Remove do próximo commit, mantendo a alteração no arquivo.</p></div>
+<div class="card"><h3>Ver staging</h3><div class="cmdline"><code>git diff --staged</code><button class="copy">Copiar</button></div><p>Mostra exatamente o que está preparado.</p></div>
+</div></section>
+
+<section class="section" id="commit"><h2>4 · Commits</h2><div class="grid">
+<div class="card"><h3>Criar commit</h3><div class="cmdline"><code>git commit -m "Adiciona login"</code><button class="copy">Copiar</button></div><p>Registra o staging no histórico.</p></div>
+<div class="card"><h3>Commit + add de rastreados</h3><div class="cmdline"><code>git commit -am "Corrige formulário"</code><button class="copy">Copiar</button></div><p>Inclui alterações de arquivos já rastreados; não inclui arquivos novos.</p></div>
+<div class="card"><h3>Alterar último commit</h3><div class="cmdline"><code>git commit --amend -m "Nova mensagem"</code><button class="copy">Copiar</button></div><p>Substitui o commit mais recente.</p></div>
+<div class="card"><h3>Amend mantendo mensagem</h3><div class="cmdline"><code>git commit --amend --no-edit</code><button class="copy">Copiar</button></div><p>Adiciona o staging ao último commit sem mudar sua mensagem.</p></div>
+<div class="card"><h3>Commit vazio</h3><div class="cmdline"><code>git commit --allow-empty -m "Inicia deploy"</code><button class="copy">Copiar</button></div><p>Cria um commit mesmo sem alteração de arquivo.</p></div>
+<div class="card"><h3>Ver commits recentes</h3><div class="cmdline"><code>git log --oneline -10</code><button class="copy">Copiar</button></div><p>Mostra os 10 últimos em formato resumido.</p></div>
+</div><div class="note"><b>Boa mensagem:</b> prefira algo como <code>Adiciona validação do formulário</code> em vez de <code>mudanças</code> ou <code>teste</code>.</div></section>
+
+<section class="section" id="branch"><h2>5 · Branches</h2><div class="grid">
+<div class="card"><h3>Listar locais</h3><div class="cmdline"><code>git branch</code><button class="copy">Copiar</button></div><p>A branch atual aparece com <code>*</code>.</p></div>
+<div class="card"><h3>Listar todas</h3><div class="cmdline"><code>git branch -a</code><button class="copy">Copiar</button></div><p>Inclui referências remotas conhecidas.</p></div>
+<div class="card"><h3>Criar</h3><div class="cmdline"><code>git branch feature/login</code><button class="copy">Copiar</button></div><p>Cria sem trocar de branch.</p></div>
+<div class="card"><h3>Criar e trocar</h3><div class="cmdline"><code>git switch -c feature/login</code><button class="copy">Copiar</button></div><p>Forma moderna e explícita.</p></div>
+<div class="card"><h3>Trocar</h3><div class="cmdline"><code>git switch main</code><button class="copy">Copiar</button></div><p>Muda para uma branch existente.</p></div>
+<div class="card"><h3>Forma clássica</h3><div class="cmdline"><code>git checkout -b feature/login</code><button class="copy">Copiar</button></div><p>Cria e troca. Ainda é muito encontrado em tutoriais.</p></div>
+<div class="card"><h3>Renomear atual</h3><div class="cmdline"><code>git branch -M main</code><button class="copy">Copiar</button></div><p>Renomeia a branch atual forçando se necessário.</p></div>
+<div class="card"><h3>Excluir local</h3><div class="cmdline"><code>git branch -d feature/login</code><button class="copy">Copiar</button></div><p>Exclusão segura de branch já integrada.</p></div>
+<div class="card"><h3>Excluir forçado</h3><div class="cmdline"><code>git branch -D feature/login</code><button class="copy">Copiar</button></div><p>Pode apagar trabalho não integrado.</p></div>
+<div class="card"><h3>Renomear</h3><div class="cmdline"><code>git branch -m antigo novo</code><button class="copy">Copiar</button></div><p>Renomeia uma branch local.</p></div>
+</div></section>
+
+<section class="section" id="merge"><h2>6 · Merge e conflitos</h2><div class="grid">
+<div class="card"><h3>Integrar branch</h3><div class="cmdline"><code>git switch main
+git merge feature/login</code><button class="copy">Copiar</button></div><p>Integra a branch na branch atual.</p></div>
+<div class="card"><h3>Abortar merge</h3><div class="cmdline"><code>git merge --abort</code><button class="copy">Copiar</button></div><p>Tenta voltar ao estado anterior ao merge em andamento.</p></div>
+<div class="card"><h3>Merge sem fast-forward</h3><div class="cmdline"><code>git merge --no-ff feature/login</code><button class="copy">Copiar</button></div><p>Força um commit de merge, preservando visualmente a integração da branch.</p></div>
+<div class="card"><h3>Ver conflito</h3><div class="cmdline"><code>git status</code><button class="copy">Copiar</button></div><p>O Git informa quais arquivos precisam ser resolvidos.</p></div>
+</div><div class="flow"><b>Fluxo de conflito:</b><br>1. abra o arquivo · 2. procure <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> · 3. escolha/edite o conteúdo correto · 4. <code>git add arquivo</code> · 5. finalize o merge com <code>git commit</code> ou o comando indicado pelo Git.</div></section>
+
+<section class="section" id="rebase"><h2>7 · Rebase</h2><p class="subtitle">Rebase reescreve a sequência de commits para reaplicá-los sobre outra base. É poderoso, mas exige cuidado com histórico já compartilhado.</p><div class="grid">
+<div class="card"><h3>Rebase simples</h3><div class="cmdline"><code>git switch feature/login
+git rebase main</code><button class="copy">Copiar</button></div><p>Reaplica os commits da feature sobre a ponta de main.</p></div>
+<div class="card"><h3>Continuar após conflito</h3><div class="cmdline"><code>git add arquivo
+git rebase --continue</code><button class="copy">Copiar</button></div><p>Depois de resolver o conflito.</p></div>
+<div class="card"><h3>Abortar</h3><div class="cmdline"><code>git rebase --abort</code><button class="copy">Copiar</button></div><p>Interrompe e tenta retornar ao estado anterior.</p></div>
+<div class="card"><h3>Rebase interativo</h3><div class="cmdline"><code>git rebase -i HEAD~5</code><button class="copy">Copiar</button></div><p>Permite reordenar, editar, juntar (<code>squash</code>) ou remover commits locais.</p></div>
+</div><div class="note danger"><b>Cuidado:</b> rebase muda os identificadores dos commits. Evite reescrever commits que outras pessoas já usam como base sem coordenação.</div></section>
+
+<section class="section" id="remote"><h2>8 · Remotos: GitHub, origin e upstream</h2><div class="grid">
+<div class="card"><h3>Listar remotos</h3><div class="cmdline"><code>git remote -v</code><button class="copy">Copiar</button></div><p>Mostra URLs de fetch e push.</p></div>
+<div class="card"><h3>Adicionar remoto</h3><div class="cmdline"><code>git remote add origin URL</code><button class="copy">Copiar</button></div><p>O nome <code>origin</code> é convencional.</p></div>
+<div class="card"><h3>Detalhar remoto</h3><div class="cmdline"><code>git remote show origin</code><button class="copy">Copiar</button></div><p>Mostra informações sobre branches e rastreamento.</p></div>
+<div class="card"><h3>Alterar URL</h3><div class="cmdline"><code>git remote set-url origin NOVA_URL</code><button class="copy">Copiar</button></div><p>Troca o endereço do remoto.</p></div>
+<div class="card"><h3>Remover remoto</h3><div class="cmdline"><code>git remote remove origin</code><button class="copy">Copiar</button></div><p>Remove a configuração local do remoto.</p></div>
+<div class="card"><h3>Renomear remoto</h3><div class="cmdline"><code>git remote rename origin upstream</code><button class="copy">Copiar</button></div><p>Troca o nome do remoto.</p></div>
+</div><div class="note"><b>origin ≠ GitHub.</b> <code>origin</code> é só um apelido local para uma URL. Você poderia chamar de <code>github</code>, <code>empresa</code>, <code>upstream</code> etc.</div></section>
+
+<section class="section" id="pull"><h2>9 · Fetch, pull e push</h2><div class="grid">
+<div class="card"><h3>Buscar sem integrar</h3><div class="cmdline"><code>git fetch origin</code><button class="copy">Copiar</button></div><p>Atualiza referências remotas sem alterar sua branch de trabalho.</p></div>
+<div class="card"><h3>Buscar tudo</h3><div class="cmdline"><code>git fetch --all</code><button class="copy">Copiar</button></div><p>Busca dos remotos configurados.</p></div>
+<div class="card"><h3>Pull da main</h3><div class="cmdline"><code>git pull origin main</code><button class="copy">Copiar</button></div><p>Busca e integra a main remota na branch atual.</p></div>
+<div class="card"><h3>Pull com rebase</h3><div class="cmdline"><code>git pull --rebase origin main</code><button class="copy">Copiar</button></div><p>Busca e tenta reaplicar seus commits locais sobre o remoto.</p></div>
+<div class="card"><h3>Primeiro push</h3><div class="cmdline"><code>git push -u origin main</code><button class="copy">Copiar</button></div><p>Publica e configura upstream.</p></div>
+<div class="card"><h3>Push normal</h3><div class="cmdline"><code>git push</code><button class="copy">Copiar</button></div><p>Envia a branch rastreada.</p></div>
+<div class="card"><h3>Publicar branch</h3><div class="cmdline"><code>git push -u origin feature/login</code><button class="copy">Copiar</button></div><p>Cria a referência remota da branch.</p></div>
+<div class="card"><h3>Apagar branch remota</h3><div class="cmdline"><code>git push origin --delete feature/login</code><button class="copy">Copiar</button></div><p>Remove a branch do remoto.</p></div>
+</div><div class="note danger"><b>Evite <code>git push --force</code> sem entender o impacto.</b> Ele pode sobrescrever histórico remoto. Quando reescrita for realmente necessária, <code>--force-with-lease</code> oferece uma proteção adicional contra sobrescrever trabalho remoto inesperado.</div></section>
+
+<section class="section" id="tags"><h2>10 · Tags, versões e releases</h2><div class="grid">
+<div class="card"><h3>Listar tags</h3><div class="cmdline"><code>git tag</code><button class="copy">Copiar</button></div><p>Lista tags locais.</p></div>
+<div class="card"><h3>Criar tag simples</h3><div class="cmdline"><code>git tag v1.0.0</code><button class="copy">Copiar</button></div><p>Marca o commit atual.</p></div>
+<div class="card"><h3>Tag anotada</h3><div class="cmdline"><code>git tag -a v1.0.0 -m "Primeira versão"</code><button class="copy">Copiar</button></div><p>Cria uma tag anotada com metadados.</p></div>
+<div class="card"><h3>Tag em commit específico</h3><div class="cmdline"><code>git tag -a v1.0.0 a1b2c3d -m "Release"</code><button class="copy">Copiar</button></div><p>Marca outro commit.</p></div>
+<div class="card"><h3>Enviar uma tag</h3><div class="cmdline"><code>git push origin v1.0.0</code><button class="copy">Copiar</button></div><p>Publica uma tag.</p></div>
+<div class="card"><h3>Enviar todas</h3><div class="cmdline"><code>git push origin --tags</code><button class="copy">Copiar</button></div><p>Envia tags locais ainda não publicadas.</p></div>
+<div class="card"><h3>Excluir tag local</h3><div class="cmdline"><code>git tag -d v1.0.0</code><button class="copy">Copiar</button></div><p>Remove a tag local.</p></div>
+<div class="card"><h3>Excluir tag remota</h3><div class="cmdline"><code>git push origin --delete v1.0.0</code><button class="copy">Copiar</button></div><p>Remove a tag do remoto.</p></div>
+</div><p>No GitHub, uma <b>Release</b> pode ser associada a uma tag e incluir notas/artefatos. Release é um recurso do GitHub; tag é um recurso do Git.</p></section>
+
+<section class="section" id="stash"><h2>11 · Stash: guardar trabalho temporariamente</h2><div class="grid">
+<div class="card"><h3>Guardar</h3><div class="cmdline"><code>git stash</code><button class="copy">Copiar</button></div><p>Guarda alterações rastreadas e deixa a working tree limpa.</p></div>
+<div class="card"><h3>Guardar com nome</h3><div class="cmdline"><code>git stash push -m "login em andamento"</code><button class="copy">Copiar</button></div><p>Ajuda a identificar o stash.</p></div>
+<div class="card"><h3>Incluir não rastreados</h3><div class="cmdline"><code>git stash -u</code><button class="copy">Copiar</button></div><p>Inclui arquivos novos não rastreados.</p></div>
+<div class="card"><h3>Listar</h3><div class="cmdline"><code>git stash list</code><button class="copy">Copiar</button></div><p>Mostra os stashes existentes.</p></div>
+<div class="card"><h3>Aplicar e manter</h3><div class="cmdline"><code>git stash apply stash@{0}</code><button class="copy">Copiar</button></div><p>Aplica sem remover da lista.</p></div>
+<div class="card"><h3>Aplicar e remover</h3><div class="cmdline"><code>git stash pop</code><button class="copy">Copiar</button></div><p>Aplica o mais recente e normalmente o remove.</p></div>
+<div class="card"><h3>Apagar stash</h3><div class="cmdline"><code>git stash drop stash@{0}</code><button class="copy">Copiar</button></div><p>Remove um stash específico.</p></div>
+<div class="card"><h3>Limpar todos</h3><div class="cmdline"><code>git stash clear</code><button class="copy">Copiar</button></div><p>Remove todos os stashes. Use com cuidado.</p></div>
+</div></section>
+
+<section class="section" id="undo"><h2>12 · Desfazer alterações sem entrar em pânico</h2><div class="grid">
+<div class="card"><h3>Descartar alteração de arquivo</h3><div class="cmdline"><code>git restore arquivo.js</code><button class="copy">Copiar</button></div><p>Restaura o arquivo para o estado do índice/HEAD conforme o contexto.</p></div>
+<div class="card"><h3>Desfazer todos os arquivos locais</h3><div class="cmdline"><code>git restore .</code><button class="copy">Copiar</button></div><p>Descarta alterações não staged da pasta. Cuidado: pode perder trabalho.</p></div>
+<div class="card"><h3>Tirar do staging</h3><div class="cmdline"><code>git restore --staged .</code><button class="copy">Copiar</button></div><p>Retira tudo do staging sem apagar o conteúdo alterado.</p></div>
+<div class="card"><h3>Reverter commit público</h3><div class="cmdline"><code>git revert a1b2c3d</code><button class="copy">Copiar</button></div><p>Cria um novo commit inverso. Geralmente adequado para histórico já compartilhado.</p></div>
+<div class="card"><h3>Voltar um commit mantendo staged</h3><div class="cmdline"><code>git reset --soft HEAD~1</code><button class="copy">Copiar</button></div><p>Remove o commit da ponta, mantendo mudanças no staging.</p></div>
+<div class="card"><h3>Voltar mantendo arquivos fora do staging</h3><div class="cmdline"><code>git reset HEAD~1</code><button class="copy">Copiar</button></div><p>O modo padrão é mixed.</p></div>
+<div class="card"><h3>Voltar e descartar</h3><div class="cmdline"><code>git reset --hard HEAD~1</code><button class="copy">Copiar</button></div><p>Move HEAD e descarta mudanças no caminho. Extremamente destrutivo.</p></div>
+<div class="card"><h3>Remover arquivos não rastreados</h3><div class="cmdline"><code>git clean -n</code><button class="copy">Copiar</button></div><p>Primeiro simule com <code>-n</code>. Só depois considere <code>git clean -f</code>.</p></div>
+</div></section>
+
+<section class="section" id="reflog"><h2>13 · Recuperação: reflog</h2><p>O <code>reflog</code> registra movimentos de referências locais, sendo uma das melhores ferramentas quando você acha que “perdeu” um commit.</p><div class="grid">
+<div class="card"><h3>Ver reflog</h3><div class="cmdline"><code>git reflog</code><button class="copy">Copiar</button></div><p>Mostra movimentos recentes de HEAD e referências locais.</p></div>
+<div class="card"><h3>Inspecionar posição</h3><div class="cmdline"><code>git show HEAD@{2}</code><button class="copy">Copiar</button></div><p>Inspeciona uma posição anterior registrada.</p></div>
+<div class="card"><h3>Criar branch de recuperação</h3><div class="cmdline"><code>git branch recuperacao a1b2c3d</code><button class="copy">Copiar</button></div><p>Cria uma referência para um commit encontrado no reflog.</p></div>
+</div><div class="note tip"><b>Regra prática:</b> se você fez um reset/rebase errado e o commit sumiu do histórico visível, não entre em pânico. Consulte <code>git reflog</code> antes de tentar outras operações.</div></section>
+
+<section class="section" id="diff"><h2>14 · Log, show, diff e inspeção</h2><div class="grid">
+<div class="card"><h3>Histórico completo</h3><div class="cmdline"><code>git log</code><button class="copy">Copiar</button></div><p>Mostra histórico detalhado.</p></div>
+<div class="card"><h3>Uma linha por commit</h3><div class="cmdline"><code>git log --oneline</code><button class="copy">Copiar</button></div><p>Formato compacto.</p></div>
+<div class="card"><h3>Gráfico</h3><div class="cmdline"><code>git log --oneline --graph --decorate --all</code><button class="copy">Copiar</button></div><p>Excelente para entender branches.</p></div>
+<div class="card"><h3>Arquivo específico</h3><div class="cmdline"><code>git log -- arquivo.js</code><button class="copy">Copiar</button></div><p>Histórico daquele caminho.</p></div>
+<div class="card"><h3>Alterações não staged</h3><div class="cmdline"><code>git diff</code><button class="copy">Copiar</button></div><p>Compara working tree com staging.</p></div>
+<div class="card"><h3>Alterações staged</h3><div class="cmdline"><code>git diff --cached</code><button class="copy">Copiar</button></div><p>Compara staging com HEAD.</p></div>
+<div class="card"><h3>Dois commits</h3><div class="cmdline"><code>git diff main..feature/login</code><button class="copy">Copiar</button></div><p>Compara estados entre referências.</p></div>
+<div class="card"><h3>Detalhar commit</h3><div class="cmdline"><code>git show a1b2c3d</code><button class="copy">Copiar</button></div><p>Mostra metadados e patch do commit.</p></div>
+<div class="card"><h3>Quem mudou cada linha</h3><div class="cmdline"><code>git blame arquivo.js</code><button class="copy">Copiar</button></div><p>Identifica o commit associado a cada linha.</p></div>
+<div class="card"><h3>Resumo de arquivos</h3><div class="cmdline"><code>git diff --stat</code><button class="copy">Copiar</button></div><p>Resumo do tamanho das alterações.</p></div>
+</div></section>
+
+<section class="section" id="search"><h2>15 · Encontrar coisas no histórico</h2><div class="grid">
+<div class="card"><h3>Buscar mensagem</h3><div class="cmdline"><code>git log --grep="login"</code><button class="copy">Copiar</button></div><p>Procura texto nas mensagens dos commits.</p></div>
+<div class="card"><h3>Buscar conteúdo</h3><div class="cmdline"><code>git log -S"nomeDaFuncao" -- arquivo.js</code><button class="copy">Copiar</button></div><p>Encontra commits que adicionaram/removeram uma ocorrência.</p></div>
+<div class="card"><h3>Buscar regex no conteúdo</h3><div class="cmdline"><code>git log -G"padrao.*regex" -- arquivo.js</code><button class="copy">Copiar</button></div><p>Procura mudanças que afetam linhas correspondentes ao padrão.</p></div>
+<div class="card"><h3>Localizar commit por autor</h3><div class="cmdline"><code>git log --author="Ana"</code><button class="copy">Copiar</button></div><p>Filtra pelo autor.</p></div>
+<div class="card"><h3>Localizar arquivo</h3><div class="cmdline"><code>git log --follow -- arquivo.js</code><button class="copy">Copiar</button></div><p>Tenta acompanhar o histórico através de renomeações.</p></div>
+<div class="card"><h3>Encontrar introdução de bug</h3><div class="cmdline"><code>git bisect start
+git bisect bad
+git bisect good a1b2c3d</code><button class="copy">Copiar</button></div><p>Usa busca binária no histórico. Teste cada commit e marque <code>git bisect good</code> ou <code>git bisect bad</code>; finalize com <code>git bisect reset</code>.</p></div>
+</div></section>
+
+<section class="section" id="ignore"><h2>16 · .gitignore e arquivos não rastreados</h2><p>Crie um arquivo chamado <code>.gitignore</code> na raiz. Ele define padrões que o Git deve ignorar.</p><div class="flow"><code># dependências
+node_modules/
+# ambiente
+.env
+.env.*
+# build
+dist/
+build/
+# sistema
+.DS_Store
+Thumbs.db
+# IDE
+.vscode/</code></div>
+<div class="grid">
+<div class="card"><h3>Ver ignorados</h3><div class="cmdline"><code>git status --ignored</code><button class="copy">Copiar</button></div><p>Ajuda a conferir se uma regra está funcionando.</p></div>
+<div class="card"><h3>Descobrir regra</h3><div class="cmdline"><code>git check-ignore -v arquivo.log</code><button class="copy">Copiar</button></div><p>Mostra qual regra está ignorando o arquivo.</p></div>
+<div class="card"><h3>Parar de rastrear mantendo arquivo</h3><div class="cmdline"><code>git rm --cached .env</code><button class="copy">Copiar</button></div><p>Depois coloque <code>.env</code> no <code>.gitignore</code> e faça commit.</p></div>
+</div><div class="note danger"><b>Importante:</b> <code>.gitignore</code> não remove um segredo que já entrou no histórico. Se uma chave/API token foi publicada, trate-a como comprometida, revogue/rotacione a credencial e depois cuide da limpeza do histórico.</div></section>
+
+<section class="section" id="conflict"><h2>17 · Conflitos: como resolver</h2><div class="flow">Quando o Git não consegue escolher automaticamente entre duas alterações, você verá marcadores semelhantes a:<br><br><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+seu conteúdo
+=======
+conteúdo da outra branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/login</code></div>
+<div class="grid">
+<div class="card"><h3>1. Identifique</h3><div class="cmdline"><code>git status</code><button class="copy">Copiar</button></div><p>Veja os arquivos em conflito.</p></div>
+<div class="card"><h3>2. Edite</h3><p>Abra cada arquivo e escolha/combina o conteúdo correto. Remova os marcadores.</p></div>
+<div class="card"><h3>3. Marque resolvido</h3><div class="cmdline"><code>git add arquivo-em-conflito</code><button class="copy">Copiar</button></div><p>Indica ao Git que o arquivo foi resolvido.</p></div>
+<div class="card"><h3>4. Continue</h3><div class="cmdline"><code>git commit</code><button class="copy">Copiar</button></div><p>No merge. No rebase, normalmente use <code>git rebase --continue</code>.</p></div>
+</div></section>
+
+<section class="section" id="github"><h2>18 · GitHub: o que existe além do Git</h2><p>Git é a ferramenta de versionamento. GitHub é uma plataforma que acrescenta colaboração, hospedagem e automações.</p><div class="grid">
+<div class="card"><h3>Repository</h3><p>Projeto hospedado no GitHub, com código, histórico, configurações e colaboração.</p></div>
+<div class="card"><h3>Pull Request</h3><p>Proposta de integrar mudanças de uma branch em outra, com revisão e discussão.</p></div>
+<div class="card"><h3>Issue</h3><p>Registro de bug, tarefa, ideia ou discussão relacionada ao projeto.</p></div>
+<div class="card"><h3>Actions</h3><p>Automação/CI/CD definida por workflows, normalmente em <code>.github/workflows/*.yml</code>.</p></div>
+<div class="card"><h3>Releases</h3><p>Publicação de versões do projeto normalmente associadas a tags.</p></div>
+<div class="card"><h3>Fork</h3><p>Cópia de um repositório na sua conta/organização, comum em colaboração com projetos de terceiros.</p></div>
+<div class="card"><h3>SSH</h3><p>Forma de autenticação para Git remoto usando chaves SSH. Alternativamente, HTTPS pode ser usado.</p></div>
+<div class="card"><h3>README</h3><p>Documento de apresentação do projeto. Normalmente <code>README.md</code>.</p></div>
+</div><h3>Fluxo clássico no GitHub</h3><div class="flow"><code>clone → branch → editar → add → commit → push → Pull Request → revisão → merge → atualizar local</code></div></section>
+
+<section class="section" id="security"><h2>19 · Segurança e autenticação</h2><div class="grid">
+<div class="card"><h3>Não commite segredos</h3><p>Senhas, tokens, chaves privadas, credenciais de banco e arquivos de ambiente com segredos não devem ser enviados ao repositório.</p></div>
+<div class="card"><h3>SSH</h3><div class="cmdline"><code>ssh-keygen -t ed25519 -C "voce@email.com"</code><button class="copy">Copiar</button></div><p>Gera uma chave SSH em ambientes que suportam esse método.</p></div>
+<div class="card"><h3>Testar conexão SSH</h3><div class="cmdline"><code>ssh -T git@github.com</code><button class="copy">Copiar</button></div><p>Testa autenticação SSH com o GitHub depois de configurar a chave.</p></div>
+<div class="card"><h3>HTTPS</h3><p>Ao usar HTTPS com GitHub, a autenticação deve seguir os mecanismos atuais do GitHub; senhas de conta não são usadas como substituto de autenticação moderna.</p></div>
+</div><div class="note danger"><b>Se um segredo vazou:</b> revogue/rotacione a credencial primeiro. Apagar o arquivo no commit mais recente não garante que ele desapareceu do histórico, clones, caches ou logs.</div></section>
+
+<section class="section" id="submodule"><h2>20 · Submodules</h2><p>Submodule permite registrar outro repositório Git como dependência dentro de um projeto.</p><div class="grid">
+<div class="card"><h3>Adicionar</h3><div class="cmdline"><code>git submodule add URL caminho</code><button class="copy">Copiar</button></div><p>Registra o repositório externo no projeto.</p></div>
+<div class="card"><h3>Inicializar após clone</h3><div class="cmdline"><code>git submodule update --init --recursive</code><button class="copy">Copiar</button></div><p>Baixa submodules, inclusive aninhados.</p></div>
+<div class="card"><h3>Atualizar</h3><div class="cmdline"><code>git submodule update --remote --merge</code><button class="copy">Copiar</button></div><p>Atualiza conforme a configuração do submodule.</p></div>
+<div class="card"><h3>Ver status</h3><div class="cmdline"><code>git submodule status</code><button class="copy">Copiar</button></div><p>Mostra o commit registrado de cada submodule.</p></div>
+</div></section>
+
+<section class="section" id="hooks"><h2>21 · Hooks</h2><p>Hooks são scripts executados em determinados eventos do Git, como antes de um commit ou depois de receber alterações.</p><div class="grid">
+<div class="card"><h3>Onde ficam</h3><div class="cmdline"><code>.git/hooks/</code><button class="copy">Copiar</button></div><p>Um repositório possui exemplos de hooks nesse diretório.</p></div>
+<div class="card"><h3>Ver caminho dos hooks</h3><div class="cmdline"><code>git rev-parse --git-path hooks</code><button class="copy">Copiar</button></div><p>Mostra o diretório efetivo usado pelo repositório.</p></div>
+<div class="card"><h3>Desabilitar hook temporariamente</h3><div class="cmdline"><code>git commit --no-verify</code><button class="copy">Copiar</button></div><p>Pula verificações de hooks aplicáveis ao commit. Use somente quando souber por que está fazendo isso.</p></div>
+</div></section>
+
+<section class="section" id="maintenance"><h2>22 · Manutenção e limpeza</h2><div class="grid">
+<div class="card"><h3>Ver objetos soltos</h3><div class="cmdline"><code>git fsck</code><button class="copy">Copiar</button></div><p>Verifica conectividade e objetos no repositório.</p></div>
+<div class="card"><h3>Otimizar repositório</h3><div class="cmdline"><code>git gc</code><button class="copy">Copiar</button></div><p>Executa manutenção/limpeza de objetos. Normalmente o Git já realiza manutenção automática.</p></div>
+<div class="card"><h3>Ver tamanho</h3><div class="cmdline"><code>git count-objects -vH</code><button class="copy">Copiar</button></div><p>Mostra informações sobre objetos e armazenamento.</p></div>
+<div class="card"><h3>Remover referências remotas obsoletas</h3><div class="cmdline"><code>git fetch --prune</code><button class="copy">Copiar</button></div><p>Limpa referências locais de branches que não existem mais no remoto.</p></div>
+</div></section>
+
+<section class="section" id="aliases"><h2>23 · Aliases: criar seus próprios atalhos</h2><div class="grid">
+<div class="card"><h3>Status curto</h3><div class="cmdline"><code>git config --global alias.st "status -sb"</code><button class="copy">Copiar</button></div><p>Depois: <code>git st</code>.</p></div>
+<div class="card"><h3>Log visual</h3><div class="cmdline"><code>git config --global alias.lg "log --oneline --graph --decorate --all"</code><button class="copy">Copiar</button></div><p>Depois: <code>git lg</code>.</p></div>
+<div class="card"><h3>Listar aliases</h3><div class="cmdline"><code>git config --global --get-regexp "^alias\."</code><button class="copy">Copiar</button></div><p>Mostra aliases globais configurados.</p></div>
+</div></section>
+
+<section class="section" id="advanced"><h2>24 · Comandos avançados que vale conhecer</h2><div class="grid">
+<div class="card"><h3>Descobrir raiz do repositório</h3><div class="cmdline"><code>git rev-parse --show-toplevel</code><button class="copy">Copiar</button></div><p>Mostra o caminho da raiz do repo.</p></div>
+<div class="card"><h3>Mostrar branch atual</h3><div class="cmdline"><code>git branch --show-current</code><button class="copy">Copiar</button></div><p>Retorna apenas o nome da branch atual.</p></div>
+<div class="card"><h3>Identificador do commit atual</h3><div class="cmdline"><code>git rev-parse HEAD</code><button class="copy">Copiar</button></div><p>Retorna o SHA do commit apontado por HEAD.</p></div>
+<div class="card"><h3>Atualizar branch remota sem merge</h3><div class="cmdline"><code>git fetch origin main</code><button class="copy">Copiar</button></div><p>Busca a referência de main do remoto.</p></div>
+<div class="card"><h3>Cherry-pick</h3><div class="cmdline"><code>git cherry-pick a1b2c3d</code><button class="copy">Copiar</button></div><p>Aplica em sua branch a mudança de um commit específico. Pode gerar conflitos.</p></div>
+<div class="card"><h3>Abortar cherry-pick</h3><div class="cmdline"><code>git cherry-pick --abort</code><button class="copy">Copiar</button></div><p>Interrompe uma operação de cherry-pick em andamento.</p></div>
+<div class="card"><h3>Encontrar branch que contém commit</h3><div class="cmdline"><code>git branch --contains a1b2c3d</code><button class="copy">Copiar</button></div><p>Lista branches locais que contêm aquele commit.</p></div>
+<div class="card"><h3>Encontrar tag/branch com commit</h3><div class="cmdline"><code>git tag --contains a1b2c3d</code><button class="copy">Copiar</button></div><p>Mostra tags que contêm o commit.</p></div>
+<div class="card"><h3>Ver objetos e referências</h3><div class="cmdline"><code>git show-ref</code><button class="copy">Copiar</button></div><p>Lista referências e seus objetos.</p></div>
+<div class="card"><h3>Pacote de uma referência</h3><div class="cmdline"><code>git archive --format=zip --output=projeto.zip HEAD</code><button class="copy">Copiar</button></div><p>Cria um arquivo compactado do conteúdo versionado.</p></div>
+<div class="card"><h3>Assinar commit</h3><div class="cmdline"><code>git commit -S -m "Commit assinado"</code><button class="copy">Copiar</button></div><p>Usa assinatura configurada, como GPG/SSH, para autenticar a autoria criptográfica.</p></div>
+<div class="card"><h3>Ver configuração de merge/rebase</h3><div class="cmdline"><code>git config --get-regexp "^(pull|branch|remote)\."</code><button class="copy">Copiar</button></div><p>Ajuda a diagnosticar comportamento de branches e remotos.</p></div>
+</div></section>
+
+<section class="section" id="trouble"><h2>25 · Problemas comuns e o que fazer</h2>
+<div class="grid">
+<div class="card"><h3>“fatal: not a git repository”</h3><p>Você provavelmente está fora de um repositório. Entre na pasta correta ou inicialize com <code>git init</code> se for um projeto novo.</p></div>
+<div class="card"><h3>“nothing to commit”</h3><p>Não há mudanças novas para registrar ou você ainda não preparou o que queria. Confira <code>git status</code>.</p></div>
+<div class="card"><h3>Push rejeitado</h3><p>O remoto pode ter commits que você não possui. Veja o estado, faça <code>git fetch</code> e escolha um fluxo apropriado, como integrar/rebasear antes do push.</p></div>
+<div class="card"><h3>“branch has no upstream”</h3><p>No primeiro envio, use <code>git push -u origin nome-da-branch</code>.</p></div>
+<div class="card"><h3>Conflito no pull</h3><p>Não é necessariamente um erro. Resolva os arquivos indicados, faça <code>git add</code> e finalize a operação.</p></div>
+<div class="card"><h3>Commit errado já enviado</h3><p>Para histórico compartilhado, considere <code>git revert</code>. Evite reescrever a branch sem entender o impacto.</p></div>
+<div class="card"><h3>Arquivo não aparece no status</h3><p>Pode estar ignorado. Use <code>git status --ignored</code> e <code>git check-ignore -v arquivo</code>.</p></div>
+<div class="card"><h3>GitHub pede autenticação</h3><p>Confira se a URL é HTTPS ou SSH e configure o método de autenticação correspondente. Não cole tokens ou chaves privadas no código.</p></div>
+</div></section>
+
+<section class="section" id="cheat"><h2>26 · Cheat sheet: o que usar em cada situação</h2>
+<table><thead><tr><th>Você quer...</th><th>Comando</th><th>O que significa</th></tr></thead><tbody>
+<tr><td>Começar Git numa pasta</td><td><code>git init</code></td><td>Inicializa o repositório</td></tr>
+<tr><td>Baixar projeto</td><td><code>git clone URL</code></td><td>Clona o remoto</td></tr>
+<tr><td>Ver o que mudou</td><td><code>git status</code></td><td>Estado atual</td></tr>
+<tr><td>Preparar arquivo</td><td><code>git add arquivo</code></td><td>Vai para staging</td></tr>
+<tr><td>Salvar no histórico</td><td><code>git commit -m "..."</code></td><td>Cria commit</td></tr>
+<tr><td>Criar branch</td><td><code>git switch -c nome</code></td><td>Cria e troca</td></tr>
+<tr><td>Trocar branch</td><td><code>git switch nome</code></td><td>Muda de linha</td></tr>
+<tr><td>Enviar ao GitHub</td><td><code>git push</code></td><td>Publica commits</td></tr>
+<tr><td>Buscar sem integrar</td><td><code>git fetch</code></td><td>Atualiza referências</td></tr>
+<tr><td>Buscar e integrar</td><td><code>git pull</code></td><td>Fetch + integração</td></tr>
+<tr><td>Unir branches</td><td><code>git merge nome</code></td><td>Integra histórico</td></tr>
+<tr><td>Reaplicar commits</td><td><code>git rebase main</code></td><td>Reescreve sequência local</td></tr>
+<tr><td>Guardar trabalho temporário</td><td><code>git stash</code></td><td>Guarda alterações</td></tr>
+<tr><td>Ver histórico</td><td><code>git log --oneline</code></td><td>Lista commits</td></tr>
+<tr><td>Ver alterações</td><td><code>git diff</code></td><td>Compara mudanças</td></tr>
+<tr><td>Desfazer commit público</td><td><code>git revert HASH</code></td><td>Cria reversão</td></tr>
+<tr><td>Recuperar histórico local</td><td><code>git reflog</code></td><td>Mostra movimentos de refs</td></tr>
+<tr><td>Marcar versão</td><td><code>git tag -a v1.0.0 -m "..."</code></td><td>Cria tag anotada</td></tr>
+<tr><td>Buscar bug no histórico</td><td><code>git bisect</code></td><td>Busca binária</td></tr>
+</tbody></table>
+<div class="note tip"><b>Fluxo para decorar:</b><br><br><code>git status → git add . → git commit -m "..." → git push</code><br><br>Quando começar uma tarefa: <code>git switch -c feature/minha-tarefa</code>.<br>Quando quiser trazer atualizações: <code>git fetch</code> e então escolha entre integrar com merge/rebase conforme o fluxo do projeto.</div>
+</section>
+
+<section class="section"><h2>27 · Comandos Git — visão dos principais grupos</h2><p>O Git possui muito mais comandos especializados. Os grupos abaixo ajudam a saber onde procurar quando aparecer uma necessidade nova:</p>
+<div class="grid">
+<div class="card"><h3>Setup / configuração</h3><p><code>config</code>, <code>help</code>, <code>version</code></p></div>
+<div class="card"><h3>Criação</h3><p><code>init</code>, <code>clone</code></p></div>
+<div class="card"><h3>Snapshot</h3><p><code>add</code>, <code>status</code>, <code>commit</code>, <code>restore</code>, <code>reset</code>, <code>rm</code>, <code>mv</code></p></div>
+<div class="card"><h3>Branches</h3><p><code>branch</code>, <code>switch</code>, <code>checkout</code>, <code>merge</code>, <code>rebase</code>, <code>cherry-pick</code></p></div>
+<div class="card"><h3>Compartilhamento</h3><p><code>fetch</code>, <code>pull</code>, <code>push</code>, <code>remote</code>, <code>submodule</code></p></div>
+<div class="card"><h3>Histórico</h3><p><code>log</code>, <code>show</code>, <code>diff</code>, <code>blame</code>, <code>reflog</code>, <code>bisect</code></p></div>
+<div class="card"><h3>Tags</h3><p><code>tag</code>, <code>describe</code></p></div>
+<div class="card"><h3>Manutenção</h3><p><code>gc</code>, <code>fsck</code>, <code>reflog</code>, <code>prune</code>, <code>count-objects</code></p></div>
+</div>
+</section>
+
+</main></div>
+<button class="back" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ topo</button>
+<footer class="wrap">Manual completo de estudo Git & GitHub · arquivo único HTML · conteúdo organizado para consulta e aprendizado.</footer>
+<script>
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",async()=>{
+ const text=b.parentElement.querySelector("code").innerText;
+ try{await navigator.clipboard.writeText(text);b.textContent="Copiado ✓"}catch(e){b.textContent="Copie manualmente"}setTimeout(()=>b.textContent="Copiar",1400)
+}));
+</script>
+</body>
+</html>
