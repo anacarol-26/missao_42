@@ -1,4 +1,4 @@
-# 🚀 missão_42
+# 🚀 missão_42 - 2026
 
 ## 👩🏻‍💻 Sobre mim
 
